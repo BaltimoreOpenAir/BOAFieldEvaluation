@@ -1,0 +1,528 @@
+% Use only LaTeX2e, calling the article.cls class and 12-point type.
+
+%\documentclass[12pt]{article}
+\documentclass[12pt]{iopart}
+\pdfminorversion=4    
+\usepackage{harvard}
+%\bibliographystyle{dcu}
+%\usepackage{times}
+\usepackage{graphicx}
+\usepackage{lineno}
+\linenumbers
+%%%%%% comment this out when submitting raw file
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+%%%%%%
+\begin{document} 
+
+\title[Reduced UHI under warmer conditions]{Reduced Urban Heat Island intensity under warmer conditions} 
+
+
+% Place the author information here.  Please hand-code the contact
+% information and notecalls; do *not* use \footnote commands.  Let the
+% author contact information appear immediately below the author names
+% as shown.  We would also prefer that you don't change the type-size
+% settings shown here.
+
+\author
+{Anna A. Scott,$^{1}$Darryn W. Waugh, $^{1}$ Ben F. Zaitchik$^{1}$}
+\address{$^{1}$Department of Earth and Planetary Sciences, Johns Hopkins University,3400 North Charles Street, MD 21212, USA}
+\eads{annascott@jhu.edu}
+
+
+%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%
+
+
+
+% Double-space the manuscript.
+
+\baselineskip24pt
+
+% Make the title.
+
+\maketitle 
+
+
+
+% Place your abstract within the special {sciabstract} environment.
+
+\begin{abstract}
+
+The Urban Heat Island (UHI), the tendency for urban areas to be hotter than rural regions, represents a significant health concern in summer as urban populations are exposed to elevated temperatures.
+A number of studies suggest that the UHI increases in warmer conditions,
+however there has been no investigation of this for a large ensemble of cities.
+Here we compare urban and rural temperatures in 54 US cities for 2000-2015 and show that the intensity of the urban heat island, measured here as the temperature differences between urban and rural stations or $\Delta T$, in fact tends to decrease with increasing temperature. 
+This holds when investigating daily variability, heat extremes, and variability across climate zones. 
+We relate this change to large-scale or synoptic weather conditions, and find that the lowest $\Delta T$ days occur during moist weather types.  
+These results suggest that absent changes in circulation, humidity, or urbanization, greenhouse gas induced global warming is unlikely to intensify $\Delta T$ in midlatitude cities. 
+
+\end{abstract}
+
+\section*{Introduction}
+
+Urbanization is one of the most significant ways in which humans alter surface climate \cite{kalnay2003impact}, causing cities to be warmer than surrounding rural areas. This phenomenon is called the Urban Heat Island effect (UHI) and represents a significant health concern in summer as urban populations are exposed to elevated temperatures \cite{luber2008climate} that have known impacts on morbidity and mortality \cite{wmo}. Projected economic losses from urban heating have been calculated as high as \$100 trillion USD worldwide by 2100 \cite{estrada2017global}.
+However, the relevance of each possible cause of urban heating may differ as a function of background climate \cite{zhao2014strong}, season \cite{arnfield2003two}, or time of day \cite{peng2011surface}. 
+This poses a challenge to adaptation, mitigation, and resiliency efforts \cite{stone2012managing} and it hinders extrapolating analysis from one city to another. A US-wide analysis showed that cooling interventions are possible \cite{georgescu2014urban}
+%%cite
+%%Georgescu, M., Morefield, P.E., Bierwagen, B.G. and Weaver, C.P., 2014. Urban adaptation can
+%%roll back warming of emerging megapolitan regions. Proceedings of the National Academy of
+%%Sciences, 111(8), pp.2909-2914.
+but implementation requires detailed cost-benefit analysis \cite{aerts2014evaluating} to evaluate potential solutions such as green roofs \cite{li2014effectiveness,sharma2016green,coffee2010preparing}. 
+%% cite: 
+%% Li, D., Bou-Zeid, E. and Oppenheimer, M., 2014. The effectiveness of cool and green roofs as
+%%urban heat island mitigation strategies. Environmental Research Letters, 9(5), p.055002.
+%%Sharma, A., Conry, P., Fernando, H.J.S., Hamlet, A.F., Hellmann, J.J. and Chen, F., 2016. Green
+%%and cool roofs to mitigate urban heat island effects in the Chicago metropolitan area: evaluation
+%%with a regional climate model. Environmental Research Letters, 11(6), p.064004.
+%%Coffee, J.E., Parzen, J., Wagstaff, M. and Lewis, R.S., 2010. Preparing for a changing climate:
+%%The Chicago climate action plan's adaptation strategy.
+%Additionally, it hinders extrapolating analysis from one city to another. % 
+
+These health concerns and economic costs make it important to know how the UHI changes over time, and between locations. Studies have measured the UHI in cities around the world using a combination of  observations \cite{tan2010urban}, modeling \cite{sharma2017urban,miao2009observational,chemel2012response}, or satellite imagery \cite{peng2011surface}. Review papers report that UHI is larger during summer \cite{oke1982energetic,arnfield2003two}, and a number of studies found cases in which the UHI increases during warm periods
+\cite{li2013synergistic,Zhou2010,gabriel2011urban,schatz2015urban,basara2010impact,ramamurthy2017impact,li2014effectiveness,li2015contrasting},
+suggesting a reinforcing interaction in which higher temperatures lead to a larger UHI and amplified health risk and economic impact in cities. These studies fall into two categories: first, modeling studies focusing on a single event in a single city or second, observational studies that examine a single city for a season to multiple seasons. 
+%These studies use either modeling \cite{li2013synergistic} or observations  \cite{schatz2015urban} to focus on a single city for a single season to a few years. 
+The modeling studies \cite{li2013synergistic,ramamurthy2017impact,li2014effectiveness,li2015contrasting} use numerical models to investigate how the UHI evolves during summertime heatwaves, each focusing their efforts on a single summertime event.  \citeasnoun{li2013synergistic} examined a summertime heatwave event lasting several days in Baltimore; this event was also examined in \citeasnoun{li2014effectiveness} and \citeasnoun{li2015contrasting}. A similar study examined a different event in New York City \cite{ramamurthy2017impact}. Both concluded that the heatwave amplifies urban-rural temperature differences at night and during the daytime. While these findings were corroborated by observations at nearby weather stations, the authors of these studies did not report how the events studied compared to other heatwave events. 
+
+The conclusions from the observational studies examining this topic are mixed. Of the observational studies \cite{Zhou2010,gabriel2011urban,schatz2015urban}, many use standard weather station data. \citeasnoun{gabriel2011urban} reported an enhanced urban heat island during summertime heatwave nights in Berlin but \citeasnoun{Zhou2010} found that this effect in Atlanta depended on which urban station is chosen for analysis. A novel measurement approach using dense networks of low-cost sensors found evidence that that the UHI increases during summertime heatwaves in Madison \cite{schatz2015urban}, but findings from Baltimore show that this is not universal \cite{scott2016intra}.  These studies examined different periods and different cities, making comparisons between studies difficult. This underscores the need for a systematic, quantitative investigation of the relationship between the UHI and temperature across multiple cities and over different time scales. 
+
+%Despite its importance to local climate, the UHI is an imperfectly understood phenomenon. Urbanization influences the boundary layer energy balance in many ways, including via surface radiation effects (reduced albedo, increased surface area, altered emissivity), surface energy partitioning (reduced evapotranspiration, changes in ground heat flux), microscale circulations (urban canyon effects, impacts on convection), anthropogenic heat from buildings and transportation, as well as pollution impacts \cite{arnfield2003two, oke1982energetic}. The relevance of each process to the UHI may differ as a function of background climate \cite{zhao2014strong}, season \cite{arnfield2003two}, or time of day \cite{peng2011surface}. 
+%This poses a challenge to adaptation, mitigation, and resiliency efforts \cite{stone2012managing}. A US-wide analysis showed that cooling interventions are possible 
+%%cite
+%%Georgescu, M., Morefield, P.E., Bierwagen, B.G. and Weaver, C.P., 2014. Urban adaptation can
+%%roll back warming of emerging megapolitan regions. Proceedings of the National Academy of
+%%Sciences, 111(8), pp.2909-2914.
+%but ultimately, implementation requires detailed cost-benefit analysis \cite{aerts2014evaluating} to evaluate potential solutions like green roofs
+%% cite: 
+%% Li, D., Bou-Zeid, E. and Oppenheimer, M., 2014. The effectiveness of cool and green roofs as
+%%urban heat island mitigation strategies. Environmental Research Letters, 9(5), p.055002.
+%%Sharma, A., Conry, P., Fernando, H.J.S., Hamlet, A.F., Hellmann, J.J. and Chen, F., 2016. Green
+%%and cool roofs to mitigate urban heat island effects in the Chicago metropolitan area: evaluation
+%%with a regional climate model. Environmental Research Letters, 11(6), p.064004.
+%%Coffee, J.E., Parzen, J., Wagstaff, M. and Lewis, R.S., 2010. Preparing for a changing climate:
+%%The Chicago climate action plan's adaptation strategy.
+%%Additionally, it hinders extrapolating analysis from one city to another. % 
+%.
+
+%Recognizing this complexity, 
+Here we perform such a study by investigating how the UHI responds to heat over several timescales as well as over space. We adopt a large sample, empirical approach in order to characterize temperature dependency of the UHI. We choose a simple UHI metric, $\Delta T$ between an urban and a rural station
+% though we recognize that multivariate heat indices are also valuable when studying UHI health impacts, 
+and we use exclusively \textit{in situ} meteorological records. Our analysis focuses on nighttime UHI, as in mid-latitude temperate cities it is larger than daytime UHI \cite{oke1982energetic} and thus more important for human health \cite{kovats2008heat} and is spatially more uniform \cite{scott2016intra}, making the analysis less sensitive to station siting.  Nonetheless, the major results hold for daytime UHI as well, as shown in Supplementary Material. 
+
+\section*{Data and Methods} 
+
+%{\bf Data} 
+We analyse temperature observations from the Global Historical Climatology Network (GHCN), a network of land-based observation stations that have passed a quality assurance procedure \cite{ghcn}. % [25]. %
+The GHCN integrates different observation networks, meaning that different instruments are used, and readings of minimum-maximum thermometers may occur at different times of day. 
+To limit the impact of these differences, our analysis considers data between 2000 and 2015, a time during which most stations make measurements in the morning and there are fewer instrumentation changes \cite{menne2009us}, % \cite{menne2009us},
+ though we have found similar results for the 1985-2015 period. %and use the XXX instrument [REF].
+We analyse daily summer (June, July and August) that has not been flagged by the quality assurance procedures.
+
+%{\bf Site Selection} 
+The weather stations used in our analysis were selected using three criteria: 1) population, 2) satellite brightness index (BI), and 3) data availability.
+Population data were obtained from http://simplemaps.com/resources/world-cities-data. The satellite nighttime brightness index (BI) is used to classify urban and rural stations. It comes  from the  Defense Meteorological Satellite Program's Operational Linescan System (DMSP/OLS) v4 \cite{dmspols} and %[27] %
+and was obtained from https://ngdc.noaa.gov/eog/dmsp/downloadV4composites.html. BI is a unit-less value representing digital numbers ranging from zero to 63, where zero represents no light received by the OLS sensor and 63 represents sensor saturation.
+
+In each US metropolitan area with an urban population above 500 000, we selected two stations, one urban, and one rural, from within a $1.5^\circ$ latitude radius of the urban center. Urban stations were selected as having the highest BI.  %The station with the largest BI and with data availability above 75\% during 1985-2015 was selected as the urban station. %For our primary analysis 
+The rural station was selected as the station with lowest BI and more than 75\% data between 2000-2015. %(1985-2015 for calculating 30 year trends)
+% 1985-2015 
+Airport stations were excluded, as were urban stations beyond 0.25$^\circ$ of the urban center. If the difference in BI between selected urban and rural stations ($\Delta BI$) was less than 25, then the city is rejected from the analysis.  This selection method yielded 54 cities across the US (see Table~S1).
+
+The sensitivity of the UHI calculations to choice of stations was tested by repeating the analysis for multiple station pairings for each city.  The urban station in each pairing was as described above, but different stations were used for the rural station in each pair. We removed the criteria that there was at least 75\% data between 2000 and 2015 and selected any station for which $\Delta BI > 25$. This resulted in an average of 10 rural stations (urban-rural pairs) per city.
+
+%{\bf UHI Intensity}  
+As the urban heat island is primarily a nocturnal effect, i.e., urban-rural differences are largest at night in most cities \cite{oke1982energetic}, particularly the mid-latitude cities present in this study, %\cite{oke1982energetic}, 
+we use daily minimum temperatures for urban areas $T_u$ and daily minimum temperatures for rural areas $T_r$ in our primarily analysis. The intensity of the UHI, $\Delta T$, for each city is calculated as $\Delta T = T_u - T_r$.  The analysis is repeated using daily maximum temperatures representing the daytime UHI effect.
+
+{%\bf Analysis}
+The relationship between $T_r$, $T_u$, and $\Delta T$ is examined over three different temporal scales as well as over space. First, we explore daily variability by examining the relationship between daily $T_r$ and $T_{u}$, using June, July, and August (JJA) data (2000-2015). Second, we examine variability during extreme heat by examining the variations in $\Delta T$ and $T_{r}$ for the 10 hottest nights in each city. Third, we examine interannual variability by looking at the 30-year (1985-2015) linear trends in $T_r$ and $ T_u$. Finally, we examine geospatial variability by looking at the relationship between 30-year mean JJA $T_r$ and $T_u$ for each city. 
+
+In each of the above cases, we calculate %the linear correlation coefficient $r$ between $\Delta T$ and $T_{r}$, and
+the linear, least squares regression of the form:
+\begin{equation} \label{eq1}
+T_u = m {T_{r}} + c
+\end{equation}
+where the slope $m$ represents the change in  $T_u$ per increase in $T_{r}$. $m$ can be interpreted as the sensitivity or response of the urban heat island changes to a change in rural or synoptic temperature.  We assess the statistical significance of this slope by testing against the null hypothesis that $m=1$, that is, urban and rural areas respond similarly to changes in temperature, using a Wald Chi-squared test as well as a standard Student's T-test. We also report the sample mean $\mu$, the standard deviation $\sigma$, and a p-value $p$, determined using the Student's T-test.
+
+%{\bf Synoptic classifications} 
+To examine if there is a connection between the  $\Delta T$ and synoptic weather conditions we use the large scale or synoptic weather classification in \citeasnoun{sheridan2002redevelopment},
+ This classifies air masses into moist and dry tropical, polar, and moderate air masses based on surface weather station data. In this study, we classify the following weather types as dry: dry marine, dry polar, and dry tropical, and classify the following weather types as moist: moist marine, moist polar, moist tropical, and moist tropical plus. The classification is available for 46 of the cities examined in this study and is downloaded from http://sheridan.geog.kent.edu/ssc.html . We calculate the sensitivity of temperature to synoptic weather conditions for rural versus urban areas 
+by subtracting the average temperature of moist days from that of dry days in each city, $\overline{T}_( {moist})  -  \overline{T}_( {dry} ) $ and compare this in both urban and rural areas. Additionally, we assess significance of the difference between moist and dry days using a two sample t-test that takes the differing sample size of moist and dry days into account. 
+ 
+%In all cases, we also report the mean $\mu$, the standard deviation $\sigma$, and a p-value $p$, determined using a Student's T-test.
+
+%{\bf Statistics} The statistical significance of our results is examined using a t-test that adjusts for lag-1 temporal autocorrelation for daily results, and a standard t-test for other results. Autocorrelation is not considered for the heatwave results as we restrict events to be unique by requiring an event separation of at least three days. 
+
+%{\bf Code availability} The computer code used to generate these results was written for Python 2.7.11 and is available on Github at github.com/gottscott/heat. This Python code uses  the following libraries: NumPy 1.10.4, SciPy 0.17.1, Ulmo 0.8.3, Pandas 18.1, Cartopy 0.13.1 and matplotlib 1.5.1.
+
+\section*{Results}
+We first examine the relationship between minimum daily rural temperature $T_{r}$ and minimum daily urban temperature $T_u$ on daily time scales. Fig. \ref{jja}a, b illustrates this relationship for Miami and Baltimore for 2000-2015 compared to the expected one-to-one relationship of $T_u = T_r$ (blue line). For each city, we see evidence of the UHI. That is, on most days, $T_u > T_r$. While it may be expected that during warmer conditions we see differences between $T_u$ and $T_r$ amplified, instead $T_u$ and $T_r$ become more similar as $T_r$ increases, indicating that nighttime heat is associated with lower urban-rural thermal differences. 
+%To quantify this, we calculate the slope $m_{daily}$ of the linear regression between $T_r$ and $T_u$ (Eq.~S1 in methods; black line in Fig.~\ref{jja}a,b).  $m_{daily}$ represents the sensitivity of how $T_u$ changes with $T_r$; as $T_u > T_r$, $m_{daily} <1$ indicates that as it grows hotter, $T_r$ and $T_u$ tend to be more similar, while $m_{daily}  > 1$ indicates that during warmer conditions their differences magnify. 
+The statistical and spatial distributions of $m_{daily}$, the sensitivity of how $T_u$ changes with $T_r$ (Eq.~\ref{eq1}), are shown in  Fig.~\ref{jja}c and d for all cities. The relationships are statistically significant ($p < 0.05$) in all cities; in all but one city, $m_{daily}< 1$ ( $0.10 \leq m_{daily} \leq 1.0 $).   Nationwide, the average response is $\overline{m}_{day} = 0.67$. That is, $T_u$ increases on average by only 0.67$^\circ$ C for every degree increase in daily $T_r$.
+Repeating this analysis with daily anomalies calculated with respect to each year's JJA mean yields a mean sensitivity similar to the raw temperature values $\overline{ m}_{day}^\prime  = 0.67 $ ($0.09\leq m_{daily}^\prime \leq 1.01$, Fig.~S1). This confirms that the decrease of $\Delta T$ during warmer conditions is due to day-to-day variability rather than interannual trends.% in $T_r$ or $\Delta T$.  
+
+The above result that $\Delta T$ decreases during warmer conditions is robust. The previous analysis uses a single urban-rural station pair, but the results are not highly sensitive to station selection (Fig.~S2). 
+Additionally, a similar relationship between $T_r$ and $T_u$ is also found for daytime (maximum daily) temperatures (Fig.~S3), for other seasons (Figs.~S4,S5,S6), and when a longer period (1985-2015) is used. 
+
+%The preceding analysis considered all JJA days, regardless of temperature. 
+It is possible the $T_r$-$T_u$ relationship may differ during periods of extreme heat, so we next examine how $T_r$ and the UHI intensity $\Delta T= T_u - T_r$ evolve during an extreme heat event. Fig. \ref{hw}a, b illustrates this for Baltimore by showing the temporal variation of $T_r$ and $\Delta T$ for the 10 hottest nights during 2000-2015 (colored lines). 
+$T_r$ rises through the hottest day and decreases afterwards (Fig. \ref{hw}a). In contrast,  $\Delta T$ decreases before the hottest day and increases sharply the day after (Fig. \ref{hw}b). Thus during these heat events there is a decrease in $\Delta T$. 
+Averaging the ten events to form a composite event for both $T_r$ and $\Delta T$ (Fig. \ref{hw}a, b black curves) shows the average increase in $T_r$ for heat extremes in Baltimore is 7.2$^\circ$C with a corresponding decrease of $\Delta T$ by $-2.6$. 
+
+This result differs from the conclusions of \citeasnoun{li2013synergistic}, who also examined heat extremes in Baltimore. They considered a single event (5-14 June 2008), during which $\Delta T$  increases during the event. However, this event is not one of the 10 highest magnitude events, for either $T_{min}$ or $T_{max}$, and its behavior appears to be an outlier.
+
+Composite heat events from each city are shown in Fig.~\ref{hw}c, d.
+As in Baltimore, while $T_r$ increases markedly in the two days before heat event day 0, $\Delta T$ decreases, and the reverse occurs after heat event day 0. This average decrease of $\Delta T$ during extreme heat, $\Delta T_{hw}$, is shown in Fig.~S7, and $\overline{\Delta T_{hw}} = -.44 ^\circ$C/$^\circ$C. This is sufficient to reduce $\Delta T$ to below zero on heat day 0 in 30/54 cities, meaning that half of the examined cities are slightly cooler than rural areas during the hottest nights. 
+The result also holds for less extreme hot periods in most cities: during the 150 hottest nights, the sensitivity $m_{hw}$ of $T_u$ to $T_r$ ranges from -.52 to 1.38 $^\circ C/ ^\circ C$, with $\overline{m}_{hw} = 0.58 ^\circ C/ ^\circ C$ (Fig.~\ref{hw}e, f). 
+
+Given the above robust relationship between daily $T_r$ and $T_u$, an obvious question is what is the cause.  It has been suggested that local feedbacks in wind \cite{haeger1999advection} and moisture \cite{li2013synergistic} may modulate the intensity of urban heating. 
+Alternatively, large scale or synoptic weather systems could modify the intensity of the heat island by changing humidity or cloudiness. Dry conditions allow rural areas to radiatively cool faster than urban areas, so increasing humidity results in a larger $T_r$ and decreased $\Delta T$. 
+We find synoptic weather to be an important factor in regulating $\Delta T$, as has been found in \citeasnoun{sheridan2000evaluation} and \citeasnoun{hardinthesis}. Using the spatial synoptic weather classification in \citeasnoun{sheridan2002redevelopment},
+% we classify days as having dry or moist synoptic weather. We 
+ we compute the average temperature on moist days $\overline{T}_{r_{moist}}$, $\overline{T}_{u_{moist}}$ and compare this with the average temperature on dry days $\overline{T}_{r_{dry}}$, $\overline{T}_{u_{dry}}$ in Fig.~\ref{synoptic}a.
+In most regions there is a tendency for humid days to be hotter than dry days; this difference is significant in most cities (39/46 or 85\%).  
+%That is, $T_{moist} > T_{dry}$ for both urban and rural environments.
+Furthermore, days when the surrounding air mass is dry tend to have a larger $\Delta T$: nationwide, $\overline{ T}_{r_{dry}}- \overline{T}_{r _{moist}} = 0.48^\circ  C$ (($\sigma \left( T_{dry} -  T_{moist}\right) = 1.18 ^\circ  C $). While small, this difference is statistically significant in most cities (29/46 or 63\%). 
+
+We compare the moist-dry temperature difference in each city, $  \overline{T}_{u}( {moist} )  -  \overline{T}_{u}( {dry} ) $, 
+against that in each rural area, $\overline{T}_{r}( {moist} ) -  \overline{T}_{r}( {dry} ) $, in Fig. ~\ref{synoptic}b, representing sensitivity to synoptic weather type in each city,
+%While it may be expected that the response to synoptic weather would be indifferent to urban or rural location, 
+and see that the values do not follow a one-to-one relationship. Rather, rural areas change substantially by weather type, but urban areas do not. During moist synoptic conditions there are higher rural temperatures rather than elevated urban temperatures (Fig.~\ref{synoptic}a), which leads to a lower $\Delta T$ during moist weather patterns. 
+As these humid weather patterns also tend to be the hottest (Fig.~\ref{synoptic}a), the role of synoptic conditions is critical to our result; individual hot events that evolve under less typical hot and dry conditions, or that are influenced by specific mesoscale circulations, may differ in characteristic. 
+%As these weather patterns are also the hottest, we conclude that synoptic weather plays a larger role than previously reported in regulating the intensity of the UHI. 
+
+% On average, days when the surrounding air mass is dry have a larger $\Delta T$: 
+%$\overline{ T_r_{dry} - T_r _{moist}} = 0.72 ^\circ  C$ ($\sigma \left( \Delta T_{dry} - \Delta T_{moist}\right) = 1.18 ^\circ  C $, N = 51). 
+%We note that during moist synoptic conditions there are higher rural temperatures rather than elevated urban temperatures, which leads to a lower $\Delta T$ during moist weather patterns (Fig.~\ref{synoptic}).
+
+Above, we have shown that $T_u - T_r$ decreases in response to daily temperature increases. This raises the possibility that  changes over longer time scales in response to warmer conditions are possible. To test this, we compare the 15-year linear trend in JJA mean $T_r$, called $\beta_{T_r}$, to the same trend in $T_u$, $\beta_{T_u}$. We find that most urban and rural areas experience nighttime warming (46/54 or 85\%). However, when we examine the variability between cities, in contrast with \citeasnoun{peterson2003assessment}, % who found no difference between urban and rural temperature trends between 1985-1991, 
+we find that urban and rural warming rates are not equal (Fig.~\ref{30yrtrend}). 
+We calculate the interannual sensitivity of $T_u$ to $T_r$ , $m_{30 year}$, and find its sign to be consistent with that of $m_{daily}$ ($m_{30 year} = 0.34 ^\circ$C/$^\circ $C), indicating that nationwide a 1$^\circ $C increase in $T_r$ results in only a .34$^\circ $C increase in $T_u$.
+% that considered trends from the 1960s  \cite{housfather, stone 2012}, reflecting the sensitivity of trend analysis to choice of cities and period of analysis.
+
+Above we have shown that differences between $T_u$ and $T_r$ tends to diminish %with increasing $T_r$ 
+on a variety of time scales, which raises the question of how $T_u$ and $T_r$ varies between cities.
+ To investigate this, we compare the 2000-2015 summer (JJA) mean $\overline{T_r}$ with similar measure for $T_u$, $\overline{T}_{u}$ (Fig.~S8).  %\ref{meantemp}, 
+We see that $\overline{T_u}$ tends to be more similar to $\overline{T_r}$ for cities with larger $\overline{T}_{r}$, with a statistically significant slope (sensitivity) $\overline{ Tu}/\overline{T}_{r}$ = -0.68. That is, the UHI is generally smaller for warmer climates, with $T_u$ increasing on average by only 0.68$^\circ $C when moving to a climate zone warmer by 1$^\circ$C. Thus, the tendency for a weaker $\Delta T$ under warmer conditions occurs not only on daily time-scales in individual cities but between cities. 
+
+\section*{Concluding remarks}
+We have shown that the intensity of the UHI diminishes with warmer temperatures over three temporal scales---daily over the entire summer, during extreme heat, and over 15 years---as well as across climate zones. 
+This has potentially important implications for accounting for urbanization in long term climate records, where it is often assumed that absent significant changes in urban extent, the urban and rural areas warm at the same rate \cite{hausfather2013quantifying,stone2012managing}.  Perhaps more importantly, it has implications for changes in the UHI as climate continues to warm as well as economic projections of climate change impacts for cities \cite{estrada2017global}. The summer median $\Delta T$ is 1.75 $^\circ$C and the interannual sensitivity of $T_u$ to changes in $T_r$ is ~$0.3 ^\circ $C/$^\circ $C, suggesting that absent changes in synoptic weather patterns, the nighttime urban heat island as defined by available weather stations may decline substantially and even disappear as background climate warms. Indeed, there is already a tendency for $T_r > T_u$ on the hottest days for many cities (e.g., Fig. \ref{jja}a, b).
+
+We emphasize that our results do not mean that global warming will not affect cities, but rather that surrounding rural areas may warm faster than urban areas absent changes in urbanization.
+Furthermore, the moist weather types which we associate with low UHI days, in particular the moist tropical weather type, are associated with elevated risks for mortality and morbidity\cite{sheridan2004progress}, meaning that lower UHIs will not necessarily translate into lower health risks. 
+This is important for heat mitigation efforts, economic projections, and climate resiliency plans to take into account, as our results suggest that rural and suburban heat mitigation efforts may be more important than previously thought. Health analyses are concerned with physiologically relevant temperature thresholds, and our results indicate that assumptions of a constant or increasing urban heat may mischaracterize those risks.   
+
+
+%\section*{Formatting Citations}
+%
+%Citations can be handled in one of three ways.  The most
+%straightforward (albeit labor-intensive) would be to hardwire your
+%citations into your \LaTeX\ source, as you would if you were using an
+%ordinary word processor.  Thus, your code might look something like
+%this:
+%
+%
+%\begin{quote}
+%\begin{verbatim}
+%However, this record of the solar nebula may have been
+%partly erased by the complex history of the meteorite
+%parent bodies, which includes collision-induced shock,
+%thermal metamorphism, and aqueous alteration
+%({\it 1, 2, 5--7\/}).
+%\end{verbatim}
+%\end{quote}
+%
+%
+%\noindent Compiled, the last two lines of the code above, of course, would give notecalls in {\it Science\/} style:
+%
+%\begin{quote}
+%\ldots thermal metamorphism, and aqueous alteration ({\it 1, 2, 5--7\/}).
+%\end{quote}
+%
+%Under the same logic, the author could set up his or her reference list as a simple enumeration,
+%
+%\begin{quote}
+%\begin{verbatim}
+%{\bf References and Notes}
+%
+%\begin{enumerate}
+%\item G. Gamow, {\it The Constitution of Atomic Nuclei
+%and Radioactivity\/} (Oxford Univ. Press, New York, 1931).
+%\item W. Heisenberg and W. Pauli, {\it Zeitschr.\ f.\ 
+%Physik\/} {\bf 56}, 1 (1929).
+%\end{enumerate}
+%\end{verbatim}
+%\end{quote}
+%
+%\noindent yielding
+%
+%\begin{quote}
+%{\bf References and Notes}
+%
+%\begin{enumerate}
+%\item G. Gamow, {\it The Constitution of Atomic Nuclei and
+%Radioactivity\/} (Oxford Univ. Press, New York, 1931).
+%\item W. Heisenberg and W. Pauli, {\it Zeitschr.\ f.\ Physik} {\bf 56},
+%1 (1929).
+%\end{enumerate}
+%\end{quote}
+%
+%
+%That's not a solution that's likely to appeal to everyone, however ---
+%especially not to users of B{\small{IB}}\TeX\ \cite{inclme}.  If you
+%are a B{\small{IB}}\TeX\ user, we suggest that you use the
+%\texttt{Science.bst} bibliography style file and the
+%\texttt{scicite.sty} package, both of which are downloadable from our author help site.
+%{\bf While you can use B{\small{IB}}\TeX\ to generate the reference list, please don't submit 
+%your .bib and .bbl files; instead, paste the generated .bbl file into the .tex file, creating
+% \texttt{\{thebibliography\}} environment.}
+% You can also
+%generate your reference lists directly by using 
+%\texttt{\{thebibliography\}} at the end of your source document; here
+%again, you may find the \texttt{scicite.sty} file useful.
+%
+%Whatever you use, be
+%very careful about how you set up your in-text reference calls and
+%notecalls.  In particular, observe the following requirements:
+%
+%\begin{enumerate}
+%\item Please follow the style for references outlined at our author
+%  help site and embodied in recent issues of {\it Science}.  Each
+%  citation number should refer to a single reference; please do not
+%  concatenate several references under a single number.
+%\item The reference numbering  continues from the 
+%main text to the Supplementary Materials (e.g. this main 
+%text has references 1-3; the numbering of references in the 
+%Supplementary Materials should start with 4). 
+%\item Please cite your references and notes in text {\it only\/} using
+%  the standard \LaTeX\ \verb+\cite+ command, not another command
+%  driven by outside macros.
+%\item Please separate multiple citations within a single \verb+\cite+
+%  command using commas only; there should be {\it no space\/}
+%  between reference keynames.  That is, if you are citing two
+%  papers whose bibliography keys are \texttt{keyname1} and
+%  \texttt{keyname2}, the in-text cite should read
+%  \verb+\cite{keyname1,keyname2}+, {\it not\/}
+%  \verb+\cite{keyname1, keyname2}+.
+%\end{enumerate}
+%
+%\noindent Failure to follow these guidelines could lead
+%to the omission of the references in an accepted paper when the source
+%file is translated to Word via HTML.
+%
+%
+%
+%\section*{Handling Math, Tables, and Figures}
+%
+%Following are a few things to keep in mind in coding equations,
+%tables, and figures for submission to {\it Science}.
+%
+%\paragraph*{In-line math.}  The utility that we use for converting
+%from \LaTeX\ to HTML handles in-line math relatively well.  It is best
+%to avoid using built-up fractions in in-line equations, and going for
+%the more boring ``slash'' presentation whenever possible --- that is,
+%for \verb+$a/b$+ (which comes out as $a/b$) rather than
+%\verb+$\frac{a}{b}$+ (which compiles as $\frac{a}{b}$).  
+% Please do not code arrays or matrices as
+%in-line math; display them instead.  And please keep your coding as
+%\TeX-y as possible --- avoid using specialized math macro packages
+%like \texttt{amstex.sty}.
+%
+%\paragraph*{Tables.}  The HTML converter that we use seems to handle
+%reasonably well simple tables generated using the \LaTeX\
+%\texttt{\{tabular\}} environment.  For very complicated tables, you
+%may want to consider generating them in a word processing program and
+%including them as a separate file.
+%
+%\paragraph*{Figures.}  Figure callouts within the text should not be
+%in the form of \LaTeX\ references, but should simply be typed in ---
+%that is, \verb+(Fig. 1)+ rather than \verb+\ref{fig1}+.  For the
+%figures themselves, treatment can differ depending on whether the
+%manuscript is an initial submission or a final revision for acceptance
+%and publication.  For an initial submission and review copy, you can
+%use the \LaTeX\ \verb+{figure}+ environment and the
+%\verb+\includegraphics+ command to include your PostScript figures at
+%the end of the compiled file.  For the final revision,
+%however, the \verb+{figure}+ environment should {\it not\/} be used;
+%instead, the figure captions themselves should be typed in as regular
+%text at the end of the source file (an example is included here), and
+%the figures should be uploaded separately according to the Art
+%Department's instructions.
+%
+%
+%
+%
+%
+%
+%
+%
+%\section*{What to Send In}
+%
+%What you should send to {\it Science\/} will depend on the stage your manuscript is in:
+%
+%\begin{itemize}
+%\item {\bf Important:} If you're sending in the initial submission of
+%  your manuscript (that is, the copy for evaluation and peer review),
+%  please send in {\it only\/} a PDF version of the
+%  compiled file (including figures).  Please do not send in the \TeX\ 
+%  source, \texttt{.sty}, \texttt{.bbl}, or other associated files with
+%  your initial submission.  (For more information, please see the
+%  instructions at our Web submission site.)
+%\item When the time comes for you to send in your revised final
+%  manuscript (i.e., after peer review), we require that you include
+%   source files and generated files in your upload. {\bf The .tex file should include
+%the reference list as an itemized list (see "Formatting citations"  for the various options). The bibliography should not be in a separate file.}  
+%  Thus, if the
+%  name of your main source document is \texttt{ltxfile.tex}, you
+%  need to include:
+%\begin{itemize}
+%\item \texttt{ltxfile.tex}.
+%\item \texttt{ltxfile.aux}, the auxilliary file generated by the
+%  compilation.
+%\item A PDF file generated from
+%  \texttt{ltxfile.tex}.
+%
+%\end{itemize}
+%\end{itemize}
+
+% Your references go at the end of the main text, and before the
+% figures.  For this document we've used BibTeX, the .bib file
+% scibib.bib, and the .bst file Science.bst.  The package scicite.sty
+% was included to format the reference numbers according to *Science*
+% style.
+
+%BibTeX users: After compilation, comment out the following two lines and paste in
+% the generated .bbl file. 
+
+%\bibliography{scibib}
+%\bibliographystyle{Science}
+%\bibliographystyle{jphysicsB}
+\bibliographystyle{dcu}
+\bibliography{uhihwbib.bib}
+
+
+
+\section*{Acknowledgments}
+AAS acknowledges NSF IGERT grant DGE-1069213 and NIEHS grant R01ES023029 as funding sources. 
+The computer code used to generate these results was written for Python 2.7.11 and is available on Github at github.com/gottscott/heat. This Python code uses  the following libraries: NumPy 1.10.4, SciPy 0.17.1, Ulmo 0.8.3, Pandas 18.1, Cartopy 0.13.1 and matplotlib 1.5.1.
+%Here you should list the contents of your Supplementary Materials -- below is an example. 
+%You should include a list of Supplementary figures, Tables, and any references that appear only in the SM. 
+%Note that the reference numbering continues from the main text to the SM.
+% In the example below, Refs. 4-10 were cited only in the SM.     
+
+
+\section*{Supplementary materials}
+%Materials and Methods\\
+%Supplementary Text\\
+Figs. S1 to S7\\
+Table S1\\
+%References \textit{(25-27)}
+
+
+% For your review copy (i.e., the file you initially send in for
+% evaluation), you can use the {figure} environment and the
+% \includegraphics command to stream your figures into the text, placing
+% all figures at the end.  For the final, revised manuscript for
+% acceptance and production, however, PostScript or other graphics
+% should not be streamed into your compliled file.  Instead, set
+% captions as simple paragraphs (with a \noindent tag), setting them
+% off from the rest of the text with a \clearpage as shown  below, and
+% submit figures as separate files according to the Art Department's
+% instructions.
+
+
+%\clearpage
+%
+%\noindent {\bf Fig. 1.} Please do not use figure environments to set
+%up your figures in the final (post-peer-review) draft, do not include graphics in your
+%source code, and do not cite figures in the text using \LaTeX\
+%\verb+\ref+ commands.  Instead, simply refer to the figure numbers in
+%the text per {\it Science\/} style, and include the list of captions at
+%the end of the document, coded as ordinary paragraphs as shown in the
+%\texttt{scifile.tex} template file.  Your actual figure files should
+%be submitted separately.
+
+
+%%%% Figures
+% JJA results figure
+\begin{figure}
+\includegraphics[width = \textwidth]{figure1.eps} 
+\caption{
+Summertime (JJA) daily UHI and temperature relationship for a) Miami and b) Baltimore. For all 54 US cities, c) histogram, mean $\mu$ and standard deviation $\sigma$ and d) map of the slope $m$ from Eq.~\ref{eq1}.
+%of the regression between temperature $T_{r}$ and $T_u$, $T_u = m_{daily} T_{r} +b$. 
+The colors of mapped values in d) correspond to histogram colors in c). For all cities, the p-value $p < 0.05$. 
+}
+\label{jja}
+\end{figure}
+
+
+% heatwave figure
+\begin{figure}
+\includegraphics[width=.9\textwidth]{figure2a_2d.eps}
+\includegraphics[width=.9\textwidth]{figure2e_2f.eps}
+%\includegraphics[width = .9\textwidth]{figures/avg_hw_map.pdf}
+\caption{a) Temporal evolution of $T_r$ for the 10 hottest nights  for Baltimore (colors) and their mean (dashed black line) and b) temporal evolution of $\Delta T = T_u - T_r$ for those events. c) Temporal evolution of $T_r$ averaged across the ten hottest events for each city and the sample mean (heavy black line), and (d) as in (b) but for $\Delta T$.  The sensitivity of $T_u$ to $T_r$ on the 150 hottest nights, $m_{hw}$, is  e) mapped and f) as a histogram. Cities for which $p>0.05$ have a smaller radius.
+}
+\label{hw}
+\end{figure}
+
+%Synoptic weather figure
+\begin{figure}
+\includegraphics[width = \textwidth]{figure3.eps}
+\caption{a) Nationwide distribution of all city's mean temperatures for urban and rural stations during moist or dry weather types. %; each value represents the mean temperature for one city. 
+Boxes indicate the middle two quartiles (Q2 and Q3), red lines indicate the mean, and whiskers represent the wide interquartile range (1.5*(Q3-Q2)). Crosses indicate data points beyond this range, that is, statistical outliers. b) Sensitivity of temperature to synoptic weather conditions for rural (x-axis) versus urban areas (y-axis). 
+%, calculated by subtracting the average temperature of moist days from that of dry days in each city, or $\overline{T_{r}( {moist}) } -  \overline{T_{r}( {dry} ) }$ versus $\overline{T_{u}( {moist} ) } -  \overline{T_{u}( {dry} ) }$. 
+%Positive values indicate that on average, moist days are hotter than dry days in a given city. 
+}
+\label{synoptic}
+\end{figure}
+
+% does UHI decrease over time? figure
+\begin{figure}
+\includegraphics[width = \textwidth]{figure4.eps}
+\caption{ $\beta_{T_r}$, the 15-year JJA linear trend, plotted versus  $\beta_{ T_u}$, the 15-year JJA linear trend in $ T_u$ for all cities.  The least-squares linear best fit line is shown in black and cities where $p< 0.05$ for both trends are highlighted in blue. Error bars (gray) represent the standard deviation of possible $\beta_{\Delta T}$ values calculated by varying the rural stations used to calculate $\Delta T$.}
+\label{30yrtrend}
+\end{figure}
+
+% over space
+\begin{figure}
+\includegraphics[width = \textwidth]{figure5.eps}
+\caption{Mean of 15 year JJA temp, $\overline{T_r}$ versus 15 year JJA mean $\overline{ T_u}$ for each city.  Error bars represent the standard deviation of possible $\Delta T$ values calculated by varying the rural stations used to calculate $\Delta T$.  }
+\label{meantemp}
+\end{figure}
+
+%\begin{figure}
+%\includegraphics[width = \textwidth]{figures/figure04.pdf}
+%\caption{Mean of 15 year JJA temp, $\overline{T_r}$ versus 15 year JJA mean $\overline{ T_u}$ for each city.  Error bars represent the standard deviation of possible $\Delta T$ values calculated by varying the rural stations used to calculate $\Delta T$.  }
+%\label{meantemp}
+%\end{figure}
+\beginsupplement
+
+\include{supplemental}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
